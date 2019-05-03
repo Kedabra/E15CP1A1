@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<%= root_path %>">Pictory</a>
+    </div>
+
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown w-100 order-3">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+     <% if logged?%>
+     <%= current_user.email%>
+     <% else %>
+            Acceso
+     <% end %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+     <% if logged?%>
+            <a class="dropdown-item" href="<%= session_path(current_user) %>" data-method="delete">Salir</a>
+     <% else %>
+            <a class="dropdown-item" href="<%= users_sign_in_path %>">Ingreso</a>
+            <a class="dropdown-item" href="<%= users_sign_up_path %>">Registro</a>
+          <% end %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
